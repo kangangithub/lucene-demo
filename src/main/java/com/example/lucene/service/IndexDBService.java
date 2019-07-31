@@ -87,7 +87,16 @@ public class IndexDBService {
 
     @Test
     public void testFindIndexDB() throws Exception {
-        List<User> list = findIndexDB("钟", "userName", 100, User.class);
+        List<User> list = findIndexDB("1", "id", 100, User.class);
         list.forEach(System.out::println);
+        System.out.println("---------------------------------------------------------------------");
+        List<User> list1 = findIndexDB("钟", "userName", 100, User.class);
+        list1.forEach(System.out::println);
+        System.out.println("---------------------------------------------------------------------");
+        List<User> list2 = findIndexDB("未来", "sal", 100, User.class);
+        list2.forEach(System.out::println);
+        System.out.println("---------------------------------------------------------------------");
+        List<User> list3 = findIndexDB("未", "sal", 100, User.class);
+        list3.forEach(System.out::println);
     }
 }
