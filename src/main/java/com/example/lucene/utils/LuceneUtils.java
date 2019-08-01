@@ -9,6 +9,7 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.store.RAMDirectory;
 import org.apache.lucene.util.Version;
 
 import java.io.File;
@@ -20,6 +21,7 @@ import java.lang.reflect.Method;
  */
 public class LuceneUtils {
     private static Directory directory;
+    private static Directory ramDirectory;
     private static Analyzer analyzer;
     private static IndexWriter.MaxFieldLength maxFieldLength;
 
@@ -29,6 +31,7 @@ public class LuceneUtils {
     static {
         try {
             directory = FSDirectory.open(new File("E:/createIndexDB"));
+            ramDirectory = new RAMDirectory(directory);
             analyzer = new StandardAnalyzer(Version.LUCENE_30);
             maxFieldLength = IndexWriter.MaxFieldLength.LIMITED;
         } catch (Exception e) {
@@ -39,6 +42,10 @@ public class LuceneUtils {
 
     public static Directory getDirectory() {
         return directory;
+    }
+
+    public static Directory getRamDirectory() {
+        return ramDirectory;
     }
 
     public static Analyzer getAnalyzer() {
