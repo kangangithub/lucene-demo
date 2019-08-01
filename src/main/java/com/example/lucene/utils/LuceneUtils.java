@@ -4,13 +4,12 @@ import com.example.lucene.model.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.store.RAMDirectory;
-import org.apache.lucene.util.Version;
+import org.wltea.analyzer.lucene.IKAnalyzer;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -30,9 +29,25 @@ public class LuceneUtils {
 
     static {
         try {
+            /**如果目录不存在，则会自动创建
+             * FSDirectory：表示文件系统目录，即会存储在计算机本地磁盘，继承于
+             * org.apache.lucene.store.BaseDirectory
+             * 同理还有：org.apache.lucene.store.RAMDirectory：存储在内存中
+             * Lucene 7.4.0 版本 open 方法传入的 Path 对象
+             * Lucene 4.10.3 版本 open 方法传入的是 File 对象
+             */
             directory = FSDirectory.open(new File("E:/createIndexDB"));
+            /**
+             * 构建内存索引库
+             */
             ramDirectory = new RAMDirectory(directory);
-            analyzer = new StandardAnalyzer(Version.LUCENE_30);
+            /** 创建分词器
+             * StandardAnalyzer：标准分词器，对英文分词效果很好，对中文是单字分词，即一个汉字作为一个词，所以对中文支持不足
+             * 市面上有很多好用的中文分词器，如 IKAnalyzer 就是其中一个
+             * 现在换成 IKAnalyzer 中文分词器
+             */
+//            analyzer = new StandardAnalyzer(Version.LUCENE_30);
+            analyzer = new IKAnalyzer();
             maxFieldLength = IndexWriter.MaxFieldLength.LIMITED;
         } catch (Exception e) {
             e.printStackTrace();

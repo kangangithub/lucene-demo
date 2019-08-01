@@ -124,27 +124,69 @@ public class IndexDBService {
     @Test
     public void testCreateIndexDB() throws Exception {
         //把数据填充到JavaBean对象中
-        for (int i = 0; i < 100; i++) {
-            User user = new User(i + "", "钟未来" + i, "未来的程序员" + i);
-            createIndexDB(user);
-        }
+        User user1 = new User("1", "鲁班七号", "不得不承认，有时候肌肉比头脑管用");
+        User user2 = new User("2", "成吉思汗", "雄鹰不畏暴风吹 狼群不为长夜畏惧");
+        User user3 = new User("3", "公孙离", "一舞剑气动四方");
+        User user4 = new User("4", "狄仁杰", "真相只有一个。");
+        User user5 = new User("5", "关羽", "把眼光，从二爷的绿帽子上移开");
+        User user6 = new User("6", "钟无艳", "俗说说得好，有钱男子汉，无钱汉子难");
+        User user7 = new User("7", "杨戬", "刀锋所划之地 便是疆土");
+        User user8 = new User("8", "花木兰", "谁说女子不如男");
+        User user9 = new User("9", "王昭君", "美貌是种罪孽，暴雪也无法掩埋。");
+        User user10 = new User("10", "甄姬", "果然，先爱上的那个人，是输家");
+        User user11 = new User("11", "貂蝉", "这么直白的盯着妾身，好羞涩哦");
+        User user12 = new User("12", "上官婉儿", "笔落兴亡定三端之妙，墨写清白尽六艺之奥");
+        User user13 = new User("13", "孙膑", "失去双脚，得到穿越时间的流量，这就是等价交换。");
+        User user14 = new User("14", "牛魔", "牛气冲天，纯爷们");
+        User user15 = new User("15", "大乔", "潮水中，沉默着被遗忘的名字，他们隶属于自作多情的泡沫！");
+        User user16 = new User("16", "姜子牙", "不刷新世界观怎么可能成长");
+        User user17 = new User("17", "白起", "最犀利的剑只为最强大的手所挥动");
+        User user18 = new User("18", "东皇太一", "舍弃怜悯，会让你蜕变成冷血的蜈蚣，丑陋而又强大。");
+        User user19 = new User("19", "项羽", "天不容我，我必逆天");
+        User user20 = new User("20", "庄周", "死亡，美妙的长眠，值得高歌一曲，啦～～～");
+        createIndexDB(user1);
+        createIndexDB(user2);
+        createIndexDB(user3);
+        createIndexDB(user4);
+        createIndexDB(user5);
+        createIndexDB(user6);
+        createIndexDB(user7);
+        createIndexDB(user8);
+        createIndexDB(user9);
+        createIndexDB(user10);
+        createIndexDB(user11);
+        createIndexDB(user12);
+        createIndexDB(user13);
+        createIndexDB(user14);
+        createIndexDB(user15);
+        createIndexDB(user16);
+        createIndexDB(user17);
+        createIndexDB(user18);
+        createIndexDB(user19);
+        createIndexDB(user20);
     }
 
     @Test
     public void testFindIndexDB() throws Exception {
-        List<User> list = findIndexDB("1", new String[]{"id"}, 10, User.class);
-        list.forEach(System.out::println);
-        System.out.println("---------------------------------------------------------------------");
+//        List<User> list = findIndexDB("1", new String[]{"id"}, 10, User.class);
+//        list.forEach(System.out::println);
+//        System.out.println("---------------------------------------------------------------------");
         List<User> list1 = findIndexDB("钟", new String[]{"userName"}, 10, User.class);
         list1.forEach(System.out::println);
+//        System.out.println("---------------------------------------------------------------------");
+//        List<User> list2 = findIndexDB("未来", new String[]{"sal"}, 10, User.class);
+//        list2.forEach(System.out::println);
+//        System.out.println("---------------------------------------------------------------------");
+//        List<User> list3 = findIndexDB("未", new String[]{"sal"}, 10, User.class);
+//        list3.forEach(System.out::println);
+//        System.out.println("---------------------------------------------------------------------");
+//        List<User> list4 = findIndexDB("未", new String[]{"userName", "sal"}, 10, User.class);
+//        list4.forEach(System.out::println);
         System.out.println("---------------------------------------------------------------------");
-        List<User> list2 = findIndexDB("未来", new String[]{"sal"}, 10, User.class);
-        list2.forEach(System.out::println);
+        List<User> list5 = findIndexDB("肌肉", new String[]{"sal"}, 10, User.class);
+        list5.forEach(System.out::println);
         System.out.println("---------------------------------------------------------------------");
-        List<User> list3 = findIndexDB("未", new String[]{"sal"}, 10, User.class);
-        list3.forEach(System.out::println);
-        System.out.println("---------------------------------------------------------------------");
-        List<User> list4 = findIndexDB("未", new String[]{"userName", "sal"}, 10, User.class);
-        list4.forEach(System.out::println);
+        List<User> list6 = findIndexDB("一", new String[]{"userName", "sal"}, 10, User.class);
+        list6.forEach(System.out::println);
     }
 }
