@@ -4,11 +4,13 @@ import com.example.lucene.model.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.store.RAMDirectory;
+import org.apache.lucene.util.Version;
 import org.wltea.analyzer.lucene.IKAnalyzer;
 
 import java.io.File;
@@ -44,10 +46,11 @@ public class LuceneUtils {
             /** 创建分词器
              * StandardAnalyzer：标准分词器，对英文分词效果很好，对中文是单字分词，即一个汉字作为一个词，所以对中文支持不足
              * 市面上有很多好用的中文分词器，如 IKAnalyzer 就是其中一个
-             * 现在换成 IKAnalyzer 中文分词器
+             * IKAnalyzer 中文分词器使用:
+             * pom.xml引入ikanalyzer.2012_u6依赖,把IKAnalyzer.cfg.xml 与 stopword.dic放到resources下
              */
-//            analyzer = new StandardAnalyzer(Version.LUCENE_30);
-            analyzer = new IKAnalyzer();
+            analyzer = new StandardAnalyzer(Version.LUCENE_30);
+//            analyzer = new IKAnalyzer();
             maxFieldLength = IndexWriter.MaxFieldLength.LIMITED;
         } catch (Exception e) {
             e.printStackTrace();

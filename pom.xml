@@ -42,6 +42,12 @@
             <artifactId>ikanalyzer</artifactId>
             <version>2012_u6</version>
         </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.esen.ikanalyzer/ikanalyzer &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.esen.ikanalyzer</groupId>-->
+<!--            <artifactId>ikanalyzer</artifactId>-->
+<!--            <version>2012ff</version>-->
+<!--        </dependency>-->
 
         <!--    Lucene关键词高亮    -->
         <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers -->
